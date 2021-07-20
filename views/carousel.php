@@ -1,6 +1,6 @@
   <div class="swiper-container mySwiper padding-y-xl padding-left-md">
     <div class="flex justify-between">
-      <h1 class="v">Vous aimerez aussi </h4>
+      <h1 class="v">Vous aimerez aussi </h1>
       <div class="swiper-btn">
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
@@ -11,7 +11,7 @@
       <div class="swiper-slide">
         <div class="card">
           <img src="ressources/img/img-cross-selling.jpg" alt="">
-          <h4 class="marque">Nike</h1>
+          <h4 class="marque">Nike</h4>
             <p class="price">SB zoom blazer Mid - Photon </p>
             <p class="price">85.00€ </p>
         </div>
