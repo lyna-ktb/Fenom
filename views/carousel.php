@@ -90,6 +90,5 @@
       </div>
     </div>
 
-    <div class="swiper-pagination flex justify-end items-end"></div>
 
   </div>

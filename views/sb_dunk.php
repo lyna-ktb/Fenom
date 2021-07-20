@@ -1,4 +1,4 @@
-<div class="col-4@sm">
+<div class="col-4@sm padding-left-lg">
   <h2>Nike SB Dunk High Pro-</h2>
   <p class="color-contrast-low text-sm">Référence : BQ6826-003</p>
 
@@ -30,7 +30,7 @@
   </div>
 
   <form class="grid gap-xxs margin-top-md">
-    <button class="btn bg-black color-white radius-0">Ajouter au panier</button>
+    <button class="btn bg-black color-white radius-0 margin-right-md">Ajouter au panier</button>
   </form>
 
   <p class="text-sm margin-top-md color-contrast-medium">Cette Nike SB Dunk High Pro Black/University Gold appartient à la collection Spring 2020.</p>
