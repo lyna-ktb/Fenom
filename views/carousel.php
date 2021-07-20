@@ -11,7 +11,7 @@
       <div class="swiper-slide">
         <div class="card">
           <img src="ressources/img/img-cross-selling.jpg" alt="">
-          <h4 class="marque">Nike</h1>
+          <h4 class="marque">Nike</h4>
             <p class="price">SB zoom blazer Mid - Photon </p>
             <p class="price">85.00€ </p>
         </div>
