@@ -1,0 +1,74 @@
+/* -------------------------------- 
+
+File#: _1_main-footer
+Title: Main Footer
+Descr: Footer navigation
+Usage: codyhouse.co/license
+
+-------------------------------- */
+
+.main-footer {
+	margin-top: 3rem;
+
+	.main-footer__link {
+		color: var(--color-contrast-medium);
+		text-decoration: none;
+
+		&:hover {
+			color: var(--color-contrast-high);
+			text-decoration: underline;
+		}
+	}
+
+	.main-footer__social {
+		text-decoration: none;
+		display: inline-block;
+		color: var(--color-contrast-medium);
+
+		&:hover {
+			color: var(--color-contrast-high);
+		}
+
+		.icon {
+			font-size: 1.2em; // icon size
+		}
+
+		@include breakpoint(md) {
+			.icon {
+				font-size: 1em;
+			}
+		}
+	}
+
+	/* -------------------------------- 
+
+File#: _1_newsletter
+Title: Newsletter 
+Descr: Newsletter form template
+Usage: codyhouse.co/license
+
+-------------------------------- */
+
+	.newsletter {
+		position: relative;
+		z-index: 1;
+	}
+	.svg {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		max-width: 20%;
+	}
+}
+
+
+
+
+@media(max-width: 1024px) {
+
+  .footer-notif {
+		justify-content: center;
+		display: flex;
+		align-items: center;
+  }
+}

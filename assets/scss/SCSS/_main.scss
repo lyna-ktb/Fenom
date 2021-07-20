@@ -1,0 +1,261 @@
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* -------------------------------- 
+
+File#: _1_tabs
+Title: Tabs
+Descr: A list of content sections (panels), accessible one at a time using control labels
+Usage: codyhouse.co/license
+
+-------------------------------- */
+
+/* .tabs {} */
+
+.tabs__control {
+  text-decoration: none;
+  color: var(--color-contrast-medium);
+
+  &:focus {
+    outline: 2px solid alpha(var(--color-primary), 0.2);
+    outline-offset: 2px;
+  }
+
+  &:hover {
+    color: var(--color-contrast-high);
+  }
+}
+
+.js {
+  .tabs__control[aria-selected="true"] {
+    color: var(--color-contrast-high);
+    text-decoration: underline;
+  }
+}
+
+/* -------------------------------- 
+
+File#: _1_btns
+Title: Buttons (Group)
+Descr: Group of connected buttons
+Usage: codyhouse.co/license
+
+-------------------------------- */
+
+
+.btns {
+  // button group
+  display: inline-block; // flex fallback
+  display: inline-flex;
+
+
+  // single button
+  .btns__btn {
+    @include reset;
+    display: block; // fallback
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: var(--space-xs) var(--space-md);
+    transition: .2s;
+    cursor: pointer;
+    @include fontSmooth;
+  }
+
+  .btns__btn--selected {
+    //  selected style
+    border: black solid 3px;
+  }
+}
+
+/* -------------------------------- 
+
+File#: _1_customer-logos
+Title: Customer Logos
+Descr: A gallery of trusted companies
+Usage: codyhouse.co/license
+
+-------------------------------- */
+
+/* .customer-logos {} */
+
+.customer-logos__logo {
+  display: block;
+  fill: currentColor;
+}
+
+
+.mySwiper {
+  width: 100%;
+  height: 100%;
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+/* -------------------------------- 
+
+File#: _2_products-gallery
+Title: Products Gallery
+Descr: A gallery of product cards
+Usage: codyhouse.co/license
+
+-------------------------------- */
+.card {
+  margin: 0;
+
+  .price {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 6px;
+    color: rgb(88, 88, 88);
+    font-size: 15px;
+  }
+
+  .marque {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 6px;
+  }
+}
+
+
+@media(max-width: 768px) {
+
+  .products-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    img {
+      padding: 10px;
+    }
+  }
+
+  .menu-mobile {
+    height: 0px;
+  }
+
+  .swiper-slide {
+    width: 100% !important;
+  }
+}
+
+
+.products-img {
+  position: relative;
+  z-index: 1000;
+
+  .swiper-container {
+    width: 100%;
+    height: 250px;
+  }
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+  }
+
+  .swiper-container .swiper-slide {
+    width: 100%;
+    height: 300px;
+    line-height: 300px;
+  }
+
+  .swiper-container .swiper-slide:nth-child(2n) {
+    height: 500px;
+    line-height: 500px;
+  }
+}
+
+.mySwiper {
+
+  .swiper-button-next {
+    position: absolute;
+    top: 140px;
+    right: 25px;
+    height: 20px;
+    left: 90%;
+    color: black;
+  }
+
+  .swiper-button-next:after,
+  .swiper-container-rtl .swiper-button-prev:after {
+    transform: scale(0.5);
+  }
+
+  .swiper-button-prev:after,
+  .swiper-container-rtl .swiper-button-prev:after {
+    transform: scale(0.5);
+  }
+
+  .swiper-button-prev {
+    position: absolute;
+    top: 140px;
+    right: 50px;
+    height: 20px;
+    left: 85%;
+    color: black;
+  }
+}
+
+.v {
+  padding-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.2);
+  -webkit-text-stroke: 1px #000;
+  text-shadow: none;
+
+}
+
+
+@media(max-width: 1024px) {
+
+  .swiper-btn {
+
+    .swiper-button-next {
+      position: absolute;
+      top: 490px;
+      left: 90%;
+      color: black;
+    }
+
+
+
+    .swiper-button-prev {
+      position: absolute;
+      top: 490px;
+      left: 85%;
+      color: black;
+    }
+  }
+}

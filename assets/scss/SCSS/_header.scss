@@ -1,0 +1,434 @@
+/* -------------------------------- 
+
+File#: _2_flexi-header
+Title: Flexi Header
+Descr: Customizable header template
+Usage: codyhouse.co/license
+
+-------------------------------- */
+
+:root {
+  --f-header-height: 50px;
+  --f-header-logo-width: 104px;
+
+  @include breakpoint(md) {
+    --f-header-height: 70px;
+  }
+}
+
+.f-header {
+  margin-bottom: 2rem;
+  height: var(--f-header-height);
+  width: 100%;
+  z-index:1200;
+  .icon{
+    font-size: 30px;
+  }
+}
+
+/* .f-header--expanded {
+  // class added when navigation is visible - small devices only
+} */
+
+.f-header__mobile-content {
+  // logo + menu button on small devices
+  position: relative;
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+}
+
+.f-header__logo {
+  display: block;
+  width: var(--f-header-logo-width);
+  flex-shrink: 0;
+  text-decoration: none;
+
+  svg,
+  img {
+    display: block;
+  }
+}
+
+.f-header__nav-control {
+  // menu button
+  --anim-menu-btn-size: 40px;
+  // 🍔 icon
+  --anim-menu-btn-icon-size: 28px;
+  --anim-menu-btn-icon-stroke: 2px;
+}
+
+.f-header__nav {
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-height: calc(100vh - var(--f-header-offset, 0px));
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  padding: 0 0 var(--space-md);
+  background-color: var(--color-bg);
+  box-shadow: var(--shadow-md);
+  font-size: var(--text-md); // edit font size of all nav elements
+  z-index: 1;
+
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-1em);
+
+  &::before {
+    // top header bg + border
+    content: '';
+    display: block;
+    position: sticky;
+    top: 0;
+    height: var(--f-header-height);
+    background-color: inherit;
+    border-bottom: 1px solid var(--color-contrast-lower);
+  }
+}
+
+.f-header__nav--is-visible {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  transition: visibility 0s, opacity .3s, transform .3s;
+}
+
+.f-header__nav-logo-wrapper {
+  display: none; // hide logo nav on small devices
+}
+
+.f-header__item {
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--color-contrast-lower);
+  color: black;
+  text-decoration: none;
+  padding: var(--space-xs) 0;
+
+}
+
+
+.f-header__link {
+  display: block;
+  display: flex;
+  align-items: center; // align icon with text
+  color: black;
+  text-decoration: none;
+  padding: var(--space-xs) 0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+
+  &:hover,
+  &[aria-current="page"] {
+    color: var(--color-primary);
+  }
+
+
+}
+
+.f-header__btn,
+.f-header__form-control {
+  width: 100%;
+  margin: var(--space-xs) 0;
+}
+
+.f-header__dropdown {
+  // sub navigation
+  padding-left: var(--space-md); // offset sub nav
+}
+
+@include breakpoint(md) {
+  .f-header__mobile-content {
+    display: none; // hide logo + menu (mobile content)
+  }
+
+  .f-header__nav {
+    // reset
+    position: static;
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    transition: none;
+    max-height: none;
+    overflow: visible;
+    overscroll-behavior: auto;
+
+    // new style
+    height: var(--f-header-height);
+    font-size: 0.875em; // edit font size of all nav elements
+
+    &::before {
+      // reset
+      display: none;
+    }
+  }
+
+  .f-header__nav-logo-wrapper {
+    display: block; // fallback
+    display: flex;
+  }
+
+  .f-header__nav-grid,
+  .f-header__list {
+    display: flex;
+    align-items: center;
+  }
+
+  .f-header__nav-grid {
+    height: 100%;
+    padding-bottom: 2rem;
+  }
+
+  .f-header__item {
+    display: inline-block; // fallback
+    position: relative;
+    border-bottom: none;
+    margin-right: var(--space-xs); // margin between nav items
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+
+  .f-header__link {
+    padding: var(--space-xxxs) var(--space-xxs);
+  }
+
+  .f-header__link--icon {
+    span {
+      display: none;
+    }
+  }
+
+  .f-header__btn,
+  .f-header__form-control {
+    margin: 0; // reset
+  }
+}
+
+/* -------------------------------- 
+
+File#: _1_anim-menu-btn
+Title: Animated Menu Button
+Descr: A menu button w/ a morphing icon
+Usage: codyhouse.co/license
+
+-------------------------------- */
+
+:root {
+  --anim-menu-btn-size: 48px;
+  --anim-menu-btn-transition-duration: .2s;
+
+  // 🍔 icon
+  --anim-menu-btn-icon-size: 42px;
+  --anim-menu-btn-icon-stroke: 4px;
+}
+
+.anim-menu-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--anim-menu-btn-size);
+  height: var(--anim-menu-btn-size);
+}
+
+// icons
+.anim-menu-btn__icon {
+  position: relative;
+  display: block;
+  font-size: var(--anim-menu-btn-icon-size);
+  width: 1em;
+  height: var(--anim-menu-btn-icon-stroke);
+  color: inherit;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  transform: scale(1);
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-image: inherit;
+    border-radius: inherit;
+  }
+}
+
+
+// menu to arrow
+.anim-menu-btn__icon--arrow-left,
+.anim-menu-btn__icon--arrow-right,
+.anim-menu-btn__icon--arrow-up,
+.anim-menu-btn__icon--arrow-down {
+  border-radius: 50em;
+  will-change: transform;
+  transition-property: transform;
+  transition-duration: var(--anim-menu-btn-transition-duration, 0.2s);
+
+  .anim-menu-btn:active & {
+    transform: scale(0.9);
+  }
+
+  &::before,
+  &::after {
+    transform-origin: calc(var(--anim-menu-btn-icon-stroke)/2) 50%;
+    will-change: transform, width;
+    transition-property: transform, width;
+    transition-duration: var(--anim-menu-btn-transition-duration, 0.2s);
+  }
+
+  &::before {
+    // line top
+    transform: translateY(-0.25em) rotate(0);
+  }
+
+  &::after {
+    // line bottom
+    transform: translateY(0.25em) rotate(0);
+  }
+}
+
+.anim-menu-btn__icon--arrow-right {
+  transform: rotate(180deg);
+
+  .anim-menu-btn:active & {
+    transform: rotate(180deg) scale(0.9);
+  }
+}
+
+.anim-menu-btn--state-b {
+
+  .anim-menu-btn__icon--arrow-left,
+  .anim-menu-btn__icon--arrow-right,
+  .anim-menu-btn__icon--arrow-up,
+  .anim-menu-btn__icon--arrow-down {
+
+    &::before,
+    &::after {
+      width: 50%;
+    }
+
+    &::before {
+      transform: translateY(0) rotate(-45deg);
+    }
+
+    &::after {
+      transform: translateY(0) rotate(45deg);
+    }
+  }
+
+  &:active .anim-menu-btn__icon--arrow-up {
+    transform: rotate(90deg) scale(0.9);
+  }
+
+  .anim-menu-btn__icon--arrow-up {
+    transform: rotate(90deg);
+  }
+
+  &:active .anim-menu-btn__icon--arrow-down {
+    transform: rotate(-90deg) scale(0.9);
+  }
+
+  .anim-menu-btn__icon--arrow-down {
+    transform: rotate(-90deg);
+  }
+}
+
+
+/* --------------------------------
+
+File#: _1_sub-navigation
+Title: Sub Navigation
+Descr: Secondary navigation template
+Usage: codyhouse.co/license
+
+-------------------------------- */
+
+/* .subnav {} */
+.subnav__nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  &::after {
+    // shadow overlay indicating scrolling
+    content: '';
+    width: 1em;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: linear-gradient(to right, alpha(var(--color-contrast-lower), 0), alpha(var(--color-contrast-lower), 1));
+    pointer-events: none;
+  }
+}
+
+.subnav__item {
+  display: inline-block; // fallback
+  display: block;
+  font-size: var(--text-sm);
+  padding: var(--space-md);
+  text-decoration: none;
+  color: alpha(var(--color-contrast-high), 0.65);
+  border: 3px solid transparent; // border-width
+  border-right-width: 0;
+  border-left-width: 0;
+
+  &:hover {
+    color: var(--color-contrast-high);
+  }
+
+  &[aria-current="page"] {
+    border-bottom-color: var(--color-primary); // border color
+    color: var(--color-contrast-high);
+  }
+}
+
+.subnav__item-two {
+  display: inline-block; // fallback
+  flex-shrink: 0;
+  display: block;
+  font-size: var(--text-sm);
+  padding: var(--space-md);
+  text-decoration: none;
+  color: black;
+  border: 3px solid transparent; // border-width
+  border-right-width: 0;
+  border-left-width: 0;
+  padding: var(--space-xs) 0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+
+
+  &:hover {
+    color: var(--color-contrast-high);
+  }
+
+  &[aria-current="page"] {
+    border-bottom-color: var(--color-primary); // border color
+    color: var(--color-contrast-high);
+  }
+
+  .subnav__item-span {
+    color: alpha(var(--color-contrast-high), 0.65); 
+  }
+}
+.item-icons{
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
