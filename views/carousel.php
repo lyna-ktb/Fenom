@@ -1,6 +1,6 @@
   <div class="swiper-container mySwiper padding-y-xl padding-left-md">
     <div class="flex justify-between">
-      <h1 class="v">Vous aimerez aussi </h1>
+      <h1 class="v">Vous aimerez aussi </h4>
       <div class="swiper-btn">
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
